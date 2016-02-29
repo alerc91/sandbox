@@ -7,11 +7,11 @@ var app = express();
 app.get("/", (req,res)=>{
   fs.readFile('contacts.json','utf8',(err,content) =>{
     console.log("Data read");
-    contacts = JSON.parse(content)
+    contacts = JSON.parse(content);
     contacts.forEach((contact) =>{
       res.write("-"+contact.name+" ("+contact.phone+")");
     });
     res.end();
   });
 });
-app.listen(8084);
+app.listen(process.env.PORT);
